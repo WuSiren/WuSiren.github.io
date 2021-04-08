@@ -67,4 +67,72 @@
     
   
   
+    
+    
+    <entry>
+      <title>关于</title>
+      <link href="about/index.html"/>
+      <url>about/index.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="个人简介"><a href="#个人简介" class="headerlink" title="个人简介"></a>个人简介</h2><p>暂无。</p><hr><h2 id="博客信息"><a href="#博客信息" class="headerlink" title="博客信息"></a>博客信息</h2><p><strong>2021年1月28日</strong><br>采用Hexo，使用Amazing主题，基于GitHub page，初步投运上线。</p><p><strong>2021年3月15日</strong><br>在原Amazing主题模板基础上进行个性化配置，实现文章置顶、加密等功能。</p><p><strong>2021年3月21日</strong><br>通过与Amazing主题原作者联系，修复了公式不能显示的问题。</p><p><strong>2021年3月24日</strong><br>通过Amazing原作者的指点，解决了基于gitalk的博客评论功能存在的问题，实现了博客评论的功能。但目前仍存在一些问题有待解决，包括博文顶端显示的评论数为99+与实际不符，首页右侧顶端的最新评论不能正常显示等。</p><p><strong>2021年3月25</strong><br>通过Amazing原作者的指点，解决了基于gitalk的博客评论功能存在的问题，即博文顶端显示的评论数为99+与实际不符，首页右侧顶端的最新评论不能正常显示。</p><p><strong>2021年3月27日 16:08</strong><br>为了使用新发现的Butterfly主题，重新创建博客本地初始版本。</p><p><strong>2021年3月27日 16:52</strong><br>将新创建的本地博客初步部署到GitHub。</p><p><strong>2021年3月27日 23:49</strong><br>1.进行了初步的个性化配置。2.正式更换了Butterfly主题。3.将撰写的《Hexo博客搭建与使用教程》作为博客发布。</p><p><strong>2021年3月30日 10:23</strong><br>对博客主题进行了初步的个性化设置，包括导航菜单、网站图标、头像、主题颜色等等。</p><p><strong>2021年4月4日 00:12</strong><br>对博客中与写博文相关的设置进行的个性化配置，包括文章模板的Front-matter、文章置顶、加密、公式显示、目录显示、版权相关等。在此过程中形成了自己以后撰写博文的操作流程，从此可以正式开始撰写博客了。</p><p><strong>2021年4月8日 23:27</strong><br>实现博客的本地搜索功能，并通过修改主题代码将导航栏中的“搜索”图标调整到最右侧。</p>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>分类</title>
+      <link href="categories/index.html"/>
+      <url>categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>图库</title>
+      <link href="gallery/index.html"/>
+      <url>gallery/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>友链</title>
+      <link href="link/index.html"/>
+      <url>link/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>音乐</title>
+      <link href="music/index.html"/>
+      <url>music/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>标签</title>
+      <link href="tags/index.html"/>
+      <url>tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+  
 </search>
