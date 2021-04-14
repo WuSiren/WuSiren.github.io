@@ -108,17 +108,6 @@
     
     
     <entry>
-      <title>图库</title>
-      <link href="gallery/index.html"/>
-      <url>gallery/index.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="书法临习"><a href="#书法临习" class="headerlink" title="书法临习"></a>书法临习</h2><div class="gallery-group-main">  <figure class="gallery-group">  <img class="gallery-group-img" src='https://i.loli.net/2021/04/11/5ASirfjaVLlDPs2.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">张猛龙碑</div>  <p>对《张猛龙碑》相关字帖的临习</p>  <a href='/gallery/%E5%BC%A0%E7%8C%9B%E9%BE%99%E7%A2%91'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img" src='https://i.loli.net/2021/04/11/8CwOYqJr9X3zRek.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">兰亭序帖</div>  <p>对《兰亭序帖》相关字帖的临习</p>  <a href='/gallery/%E5%85%B0%E4%BA%AD%E5%BA%8F%E5%B8%96'></a>  </figcaption>  </figure>  </div><hr><h2 id="其他相册"><a href="#其他相册" class="headerlink" title="其他相册"></a>其他相册</h2><div class="gallery-group-main">  <figure class="gallery-group">  <img class="gallery-group-img" src='https://i.loli.net/2019/11/10/T7Mu8Aod3egmC4Q.png' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">壁纸</div>  <p>收藏的一些壁纸</p>  <a href='/gallery/wallpaper'></a>  </figcaption>  </figure>  </div>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>分类</title>
       <link href="categories/index.html"/>
       <url>categories/index.html</url>
@@ -130,9 +119,31 @@
     
     
     <entry>
+      <title>图库</title>
+      <link href="gallery/index.html"/>
+      <url>gallery/index.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="书法临习"><a href="#书法临习" class="headerlink" title="书法临习"></a>书法临习</h2><div class="gallery-group-main">  <figure class="gallery-group">  <img class="gallery-group-img" src='https://i.loli.net/2021/04/11/5ASirfjaVLlDPs2.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">张猛龙碑</div>  <p>对《张猛龙碑》相关字帖的临习</p>  <a href='/gallery/%E5%BC%A0%E7%8C%9B%E9%BE%99%E7%A2%91'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img" src='https://i.loli.net/2021/04/11/8CwOYqJr9X3zRek.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">兰亭序帖</div>  <p>对《兰亭序帖》相关字帖的临习</p>  <a href='/gallery/%E5%85%B0%E4%BA%AD%E5%BA%8F%E5%B8%96'></a>  </figcaption>  </figure>  </div><hr><h2 id="其他相册"><a href="#其他相册" class="headerlink" title="其他相册"></a>其他相册</h2><div class="gallery-group-main">  <figure class="gallery-group">  <img class="gallery-group-img" src='https://i.loli.net/2019/11/10/T7Mu8Aod3egmC4Q.png' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">壁纸</div>  <p>收藏的一些壁纸</p>  <a href='/gallery/wallpaper'></a>  </figcaption>  </figure>  </div>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>链接</title>
       <link href="link/index.html"/>
       <url>link/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>movies</title>
+      <link href="movies/index.html"/>
+      <url>movies/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -190,17 +201,6 @@
       <url>gallery/%E5%BC%A0%E7%8C%9B%E9%BE%99%E7%A2%91/index.html</url>
       
         <content type="html"><![CDATA[<p>不定期更新本人临习张猛龙碑的拙作🙈，还望各位方家不吝赐教！🙏🙏🙏</p><hr><h2 id="2021年1月6日"><a href="#2021年1月6日" class="headerlink" title="2021年1月6日"></a>2021年1月6日</h2><p><img src="https://i.loli.net/2021/04/11/fVbQ7X54wsPRN2T.jpg" alt=""></p><hr><h2 id="2020年11月7日"><a href="#2020年11月7日" class="headerlink" title="2020年11月7日"></a>2020年11月7日</h2><p><img src="https://i.loli.net/2021/04/11/YeNmgbXxGQSHZ6M.jpg" alt=""></p><hr><h2 id="2020年10月4日"><a href="#2020年10月4日" class="headerlink" title="2020年10月4日"></a>2020年10月4日</h2><p><img src="https://i.loli.net/2021/04/11/KtMpv7Gd83N95hJ.jpg" alt=""></p><hr><h2 id="以下为早期习作"><a href="#以下为早期习作" class="headerlink" title="以下为早期习作"></a>以下为早期习作</h2><div class="justified-gallery"><p><img src="https://i.loli.net/2021/04/11/B4dyf9vthIJHGoP.jpg" alt=""><br><img src="https://i.loli.net/2021/04/11/DdaFJXickNw78eC.jpg" alt=""><br><img src="https://i.loli.net/2021/04/11/HlGPev8F54iMh3k.jpg" alt=""></p>          </div>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>movies</title>
-      <link href="movies/index.html"/>
-      <url>movies/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
