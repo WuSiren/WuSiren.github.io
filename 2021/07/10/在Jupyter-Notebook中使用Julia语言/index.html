@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>在Jupyter Notebook中使用Julia语言 | 终食之间</title><meta name="keywords" content="技术,编程,julia"><meta name="author" content="吴思仁,2117675061@qq.com"><meta name="copyright" content="吴思仁"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="据说Jupyter的“Ju”指的是Julia语言，“py”指的是Python语言，“ter”的“r”指的是R语言。本文记录如何在Jupyter Notebook中使用Julia语言编程。 具体配置过程可参考这篇文章以及这篇文章。 经笔者测试，成功在网页端的Jupyter中使用Julia。但是笔者的目标是在VS code中使用Jupyter进行Julia编程，经过一番折腾之后并没有成功（准确来说，偶">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Jupyter Notebook中使用Julia语言">
+<meta property="og:url" content="https://wusiren.github.io/2021/07/10/%E5%9C%A8Jupyter-Notebook%E4%B8%AD%E4%BD%BF%E7%94%A8Julia%E8%AF%AD%E8%A8%80/index.html">
+<meta property="og:site_name" content="终食之间">
+<meta property="og:description" content="据说Jupyter的“Ju”指的是Julia语言，“py”指的是Python语言，“ter”的“r”指的是R语言。本文记录如何在Jupyter Notebook中使用Julia语言编程。 具体配置过程可参考这篇文章以及这篇文章。 经笔者测试，成功在网页端的Jupyter中使用Julia。但是笔者的目标是在VS code中使用Jupyter进行Julia编程，经过一番折腾之后并没有成功（准确来说，偶">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/07/10/WrOfRJ5y2EPDZX6.png">
+<meta property="article:published_time" content="2021-07-10T09:16:21.000Z">
+<meta property="article:modified_time" content="2021-07-10T10:11:38.529Z">
+<meta property="article:author" content="吴思仁">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="julia">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/07/10/WrOfRJ5y2EPDZX6.png"><link rel="shortcut icon" href="/myFiles/wusirenlogo.png"><link rel="canonical" href="https://wusiren.github.io/2021/07/10/%E5%9C%A8Jupyter-Notebook%E4%B8%AD%E4%BD%BF%E7%94%A8Julia%E8%AF%AD%E8%A8%80/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 吴思仁","link":"链接: ","source":"来源: 终食之间","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-07-10 18:11:38'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/myFiles/wusirenlogo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-photo-video"></i><span> 媒体</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 栏目</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/roaming/"><i class="fa-fw fas fa-map-marked-alt"></i><span> 云游足迹</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-info"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2021/07/10/WrOfRJ5y2EPDZX6.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">终食之间</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-photo-video"></i><span> 媒体</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 栏目</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/roaming/"><i class="fa-fw fas fa-map-marked-alt"></i><span> 云游足迹</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-info"></i><span> 关于</span></a></div></div><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">在Jupyter Notebook中使用Julia语言</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-10T09:16:21.000Z" title="发表于 2021-07-10 17:16:21">2021-07-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-10T10:11:38.529Z" title="更新于 2021-07-10 18:11:38">2021-07-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">171</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="在Jupyter Notebook中使用Julia语言"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>据说Jupyter的“Ju”指的是Julia语言，“py”指的是Python语言，“ter”的“r”指的是R语言。本文记录如何在Jupyter Notebook中使用Julia语言编程。</p>
+<p>具体配置过程可参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/42812662">这篇文章</a>以及<a target="_blank" rel="noopener" href="https://blog.csdn.net/EcoStride/article/details/108211993">这篇文章</a>。</p>
+<p>经笔者测试，成功在网页端的Jupyter中使用Julia。但是笔者的目标是在VS code中使用Jupyter进行Julia编程，经过一番折腾之后并没有成功（准确来说，偶尔成功，大部分情况不奏效，原因不明），按说VS code中的<code>Jupyter</code>插件应该是能够支持Julia语言的，可是不知道为什么搞不定，特此记录，待搞定再写详细过程。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:2117675061@qq.com">吴思仁</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wusiren.github.io/2021/07/10/%E5%9C%A8Jupyter-Notebook%E4%B8%AD%E4%BD%BF%E7%94%A8Julia%E8%AF%AD%E8%A8%80/">https://wusiren.github.io/2021/07/10/在Jupyter-Notebook中使用Julia语言/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wusiren.github.io" target="_blank">终食之间</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8A%80%E6%9C%AF/">技术</a><a class="post-meta__tags" href="/tags/%E7%BC%96%E7%A8%8B/">编程</a><a class="post-meta__tags" href="/tags/julia/">julia</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/07/10/WrOfRJ5y2EPDZX6.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2021/07/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"><img class="prev-cover" src="https://i.loli.net/2021/07/05/Cn9zmdtGYVQcAwZ.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">深度学习笔记2：基本语法</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/06/22/Gurobi求解器的安装与使用/" title="Gurobi求解器的安装与使用"><img class="cover" src="https://www.gurobi.com/wp-content/uploads/2019/07/Gurobi_desktop.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-22</div><div class="title">Gurobi求解器的安装与使用</div></div></a></div><div><a href="/2021/05/06/YALMIP入门/" title="YALMIP入门"><img class="cover" src="https://yalmip.github.io/images/forest.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-06</div><div class="title">YALMIP入门</div></div></a></div><div><a href="/2021/05/14/吃瓜记/" title="吃瓜记"><img class="cover" src="https://i.loli.net/2021/05/14/AFUXu4VL7pyHb8n.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-14</div><div class="title">吃瓜记</div></div></a></div><div><a href="/2021/05/05/从GitHub中删除commit提交历史/" title="从GitHub中删除commit提交历史"><img class="cover" src="https://i.loli.net/2021/05/05/oPlC928BbaFXWVi.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-05</div><div class="title">从GitHub中删除commit提交历史</div></div></a></div><div><a href="/2021/04/07/实用技能汇总/" title="实用技能汇总"><img class="cover" src="https://i.loli.net/2021/04/08/3DAQIxnJMLvlKki.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-07</div><div class="title">实用技能汇总</div></div></a></div><div><a href="/2021/03/27/Hexo博客搭建与使用教程/" title="Hexo博客搭建与使用教程"><img class="cover" src="http://imgedu.lagou.com/2024393-20200511143556231-530215527.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-27</div><div class="title">Hexo博客搭建与使用教程</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/myFiles/wusirenlogo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">吴思仁</div><div class="author-info__description">无耽小喜，无溺大悲。<br>心如止水，视死如归。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" href="mailto:2117675061@qq.com"><i class="fas fa-envelope"></i><span>与我联系</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content"><center>热烈庆祝终食之间百日诞辰！💯🎊</center></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/07/10/%E5%9C%A8Jupyter-Notebook%E4%B8%AD%E4%BD%BF%E7%94%A8Julia%E8%AF%AD%E8%A8%80/" title="在Jupyter Notebook中使用Julia语言"><img src="https://i.loli.net/2021/07/10/WrOfRJ5y2EPDZX6.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在Jupyter Notebook中使用Julia语言"/></a><div class="content"><a class="title" href="/2021/07/10/%E5%9C%A8Jupyter-Notebook%E4%B8%AD%E4%BD%BF%E7%94%A8Julia%E8%AF%AD%E8%A8%80/" title="在Jupyter Notebook中使用Julia语言">在Jupyter Notebook中使用Julia语言</a><time datetime="2021-07-10T09:16:21.000Z" title="发表于 2021-07-10 17:16:21">2021-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" title="深度学习笔记2：基本语法"><img src="https://i.loli.net/2021/07/05/Cn9zmdtGYVQcAwZ.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="深度学习笔记2：基本语法"/></a><div class="content"><a class="title" href="/2021/07/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" title="深度学习笔记2：基本语法">深度学习笔记2：基本语法</a><time datetime="2021-07-05T06:56:35.000Z" title="发表于 2021-07-05 14:56:35">2021-07-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/05/%E7%83%AD%E7%83%88%E5%BA%86%E7%A5%9D%E7%BB%88%E9%A3%9F%E4%B9%8B%E9%97%B4%E7%99%BE%E6%97%A5%E8%AF%9E%E8%BE%B0%EF%BC%81/" title="热烈庆祝终食之间百日诞辰！"><img src="https://i.loli.net/2021/06/23/Icpv5kndEQizXRB.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="热烈庆祝终食之间百日诞辰！"/></a><div class="content"><a class="title" href="/2021/07/05/%E7%83%AD%E7%83%88%E5%BA%86%E7%A5%9D%E7%BB%88%E9%A3%9F%E4%B9%8B%E9%97%B4%E7%99%BE%E6%97%A5%E8%AF%9E%E8%BE%B0%EF%BC%81/" title="热烈庆祝终食之间百日诞辰！">热烈庆祝终食之间百日诞辰！</a><time datetime="2021-07-04T22:06:06.000Z" title="发表于 2021-07-05 06:06:06">2021-07-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/27/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="深度学习笔记1：环境配置"><img src="https://i.loli.net/2021/06/28/dL8JpfhEc1VOzqB.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="深度学习笔记1：环境配置"/></a><div class="content"><a class="title" href="/2021/06/27/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="深度学习笔记1：环境配置">深度学习笔记1：环境配置</a><time datetime="2021-06-27T07:07:06.000Z" title="发表于 2021-06-27 15:07:06">2021-06-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/24/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B00%EF%BC%9A%E7%B4%A2%E5%BC%95/" title="深度学习笔记0：索引"><img src="https://i.loli.net/2021/06/27/ZvkCJRON58wjM2z.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="深度学习笔记0：索引"/></a><div class="content"><a class="title" href="/2021/06/24/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B00%EF%BC%9A%E7%B4%A2%E5%BC%95/" title="深度学习笔记0：索引">深度学习笔记0：索引</a><time datetime="2021-06-24T14:21:23.000Z" title="发表于 2021-06-24 22:21:23">2021-06-24</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://i.loli.net/2021/07/10/WrOfRJ5y2EPDZX6.png')"><div id="footer-wrap"><div class="copyright">&copy;2021 By 吴思仁</div><div class="footer_custom_text">如有侵权  敬请联系</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="热烈祝贺,🎊,终食之间,💖,百日诞辰,💯,热烈祝贺,🎉,终食之间,💕,百日诞辰,💯,热烈祝贺,🎈,终食之间,💗,百日诞辰,💯" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
