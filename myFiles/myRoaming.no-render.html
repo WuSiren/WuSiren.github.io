@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
-    <title>轨迹回放</title>
+    <title>云游足迹</title>
     <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/>
+    <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
     <style>
         html, body, #container {
             height: 100%;
@@ -20,46 +21,58 @@
         .input-card .btn:last-child{
             margin-right: 0;
         }
+        .map{
+        height: 100%;
+        width: 100%;
+        float: left;
+        }
 
     </style>
 </head>
 <body>
 <div id="container"></div>
 <div class="input-card">
-    <h4>左击获取经纬度：</h4>
+    <!-- <h4>左击获取经纬度：</h4> -->
     <div class="input-item">
-      <input type="text" readonly="true" id="lnglat">
+        <h4>左击获取经纬：</h4><input type="text" readonly="true" id="lnglat">
     </div>
-    <h4>轨迹回放控制</h4>
-    <div class="input-item">
+    <!-- <h4>轨迹回放控制：</h4> -->
+    <!-- <div class="input-item">
         <input type="button" class="btn" value="开始动画" id="start" onclick="startAnimation()"/>
         <input type="button" class="btn" value="暂停动画" id="pause" onclick="pauseAnimation()"/>
     </div>
     <div class="input-item">
         <input type="button" class="btn" value="继续动画" id="resume" onclick="resumeAnimation()"/>
         <input type="button" class="btn" value="停止动画" id="stop" onclick="stopAnimation()"/>
+    </div> -->
+    <div class="input-item">
+        <h4>轨迹回放控制：</h4><input type="button" class="btn" value="启动 / 暂停" onclick="toggle()"/>
     </div>
 </div>
 <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=452ee5c52fe0869fc3a9a06420d0016b"></script>
 <script>
     var marker, lineArr = [
         [116.31518,39.999891],
-        [116.315202,40.004272],
-        [116.315274,40.004681],
-        [116.315724,40.005425],
-        [116.316207,40.005766],
-        [116.318267,40.006173],
+        [116.315216,40.0044],
+        [116.315297,40.004787],
+        [116.315484,40.005169],
+        [116.315806,40.005484],
+        [116.316294,40.005793],
+        [116.316729,40.005957],
+        [116.316729,40.005957],
+        [116.317263,40.006057],
+        [116.318383,40.006196],
         ];
 
     var map = new AMap.Map("container", {
         resizeEnable: true,
-        center: [116.407387,39.904179],
+        center: [116.407387,39.904179], // 不用改
         zoom: 17
     });
 
     marker = new AMap.Marker({
         map: map,
-        position: [116.318267,40.006173],
+        position: [116.318383,40.006196],
         icon: "/myFiles/wusirenlogo-small.png", // "https://webapi.amap.com/images/car.png",
         offset: new AMap.Pixel(-13, -13), // new AMap.Pixel(-26, -13),
         autoRotation: true,
@@ -85,8 +98,7 @@
     var marker1 = new AMap.Marker({
         position:[116.31518,39.999891],//位置
         icon: icon, // 添加 Icon 实例
-        title: '202107130004-清华西门',
-        animation: 'AMAP_ANIMATION_DROP'
+        title: '202107130004-清华西门'
     })
     map.add(marker1);//添加到地图
 
@@ -122,24 +134,40 @@
 
     map.setFitView();
 
-    function startAnimation () {
-        marker.moveAlong(lineArr, 2000);
+    // function startAnimation () {
+    //     marker.moveAlong(lineArr, 2000);
+    // }
+
+    // function pauseAnimation () {
+    //     marker.pauseMove();
+    // }
+
+    // function resumeAnimation () {
+    //     marker.resumeMove();
+    // }
+
+    // function stopAnimation () {
+    //     marker.stopMove();
+    // }
+
+    var isVisible = true;
+    var isResume = false;
+    function toggle() {
+        if (isVisible) {
+            if(isResume) {
+                marker.resumeMove();
+            } else {
+                marker.moveAlong(lineArr, 2000);
+            }
+            isVisible = false;
+            isResume = true;
+        } else {
+            marker.pauseMove();
+            isVisible = true;
+        }
     }
 
-    function pauseAnimation () {
-        marker.pauseMove();
-    }
-
-    function resumeAnimation () {
-        marker.resumeMove();
-    }
-
-    function stopAnimation () {
-        marker.stopMove();
-    }
-
-
-    //为地图注册click事件获取鼠标点击出的经纬度坐标
+    //为地图注册click事件获取鼠标点击处的经纬度坐标
     map.on('click', function(e) {
         document.getElementById("lnglat").value = e.lnglat.getLng() + ',' + e.lnglat.getLat()
     });
